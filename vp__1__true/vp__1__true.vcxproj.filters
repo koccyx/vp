@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="models">
+      <UniqueIdentifier>{a1e4d8a1-8a26-4ad1-8276-52f5d85227e3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="models\classClient">
+      <UniqueIdentifier>{51403079-04f0-42ac-96c7-e6e6f637be43}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="models\classEmploye">
+      <UniqueIdentifier>{a07626c1-e954-47e1-ae6f-c0402b577443}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="models\classContribution">
+      <UniqueIdentifier>{bf4a0f2b-02dc-49c9-a6a3-6a7e437f8723}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="menu">
+      <UniqueIdentifier>{662590a0-dc06-457c-b2ed-63bcb2d23038}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="MenuItem.cpp">
+      <Filter>menu</Filter>
+    </ClCompile>
+    <ClCompile Include="Menu.cpp">
+      <Filter>menu</Filter>
+    </ClCompile>
+    <ClCompile Include="vp__1__true.cpp" />
+    <ClCompile Include="client.cpp">
+      <Filter>models\classClient</Filter>
+    </ClCompile>
+    <ClCompile Include="employe.cpp">
+      <Filter>models\classEmploye</Filter>
+    </ClCompile>
+    <ClCompile Include="Contribution.cpp">
+      <Filter>models\classContribution</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Menu.h">
+      <Filter>menu</Filter>
+    </ClInclude>
+    <ClInclude Include="MenuItem.h">
+      <Filter>menu</Filter>
+    </ClInclude>
+    <ClInclude Include="client.h">
+      <Filter>models\classClient</Filter>
+    </ClInclude>
+    <ClInclude Include="User.h">
+      <Filter>models</Filter>
+    </ClInclude>
+    <ClInclude Include="employe.h">
+      <Filter>models\classEmploye</Filter>
+    </ClInclude>
+    <ClInclude Include="Contribution.h">
+      <Filter>models\classContribution</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
