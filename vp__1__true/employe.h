@@ -1,5 +1,7 @@
 #pragma once
 #include "User.h"
+#include <iostream>
+using namespace std;
 
 
 namespace FSN{
@@ -7,9 +9,8 @@ namespace FSN{
 	private:
 		std::string position;
 	public:
-		void setPosition();
-		std::string getPosition(std::string);
 		Employe(std::string, std::string, int, std::string, std::string, std::string);
+		Employe();
 		std::string getName();
 		std::string getSurname();
 		int getAge();
@@ -23,6 +24,12 @@ namespace FSN{
 		void setPassword(std::string);
 		void setPosition(std::string);
 		void say(std::string) override;
+		bool operator == (const Employe& other);
+		bool operator > (const Employe& other);
+		bool operator < (const Employe& other);
+		void operator = (const Employe& other);
+		friend ostream& operator << (ostream& os, const Employe&);
+		friend std::istream& operator >> (istream& is, Employe&);
 	};
 
 }

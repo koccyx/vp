@@ -3,13 +3,16 @@ using namespace std;
 
 
 namespace FSN {
-	Client::Client(string tname, string tsurname, int tage, string tlogin, string tpassword, string tdeposit) {
+	Client::Client(string tname, string tsurname, int tage, string tlogin, string tpassword, int tdeposit) {
 		name = tname;
 		surname = tsurname;
 		age = tage;
 		login = tlogin;
 		password = tpassword;
 		deposit = tdeposit;
+	}
+	Client::Client() {
+
 	}
 
 	void Client::setName(string tname) {
@@ -32,7 +35,7 @@ namespace FSN {
 		password = tpassword;
 	}
 
-	void Client::setDeposit(string tdeposit) {
+	void Client::setDeposit(int tdeposit) {
 		deposit = tdeposit;
 	}
 
@@ -56,11 +59,39 @@ namespace FSN {
 		return password;
 	}
 
-	string Client::getDeposit() {
+	int Client::getDeposit() {
 		return deposit;
 	}
 
 	void Client::say(string words) {
 		cout << "Hello I want to " << words;
 	}
-}
+
+	bool Client::operator == (const Client& other) {
+		return this->deposit == other.deposit;
+	}
+
+	bool Client::operator > (const Client& other) {
+		return this->deposit > other.deposit;
+	}
+
+	bool Client::operator < (const Client& other) {
+		return this->deposit < other.deposit;
+	}
+
+	void Client::operator = (const Client& other) {
+		this->name = other.name;
+		this->surname = other.surname;
+		this->age = other.age;
+		this->login = other.login;
+		this->password = other.password;
+		this->deposit = other.deposit;
+	}
+
+	ostream& operator << (ostream& os, const Client& client) {
+		return os << "name: " << client.name << '\n' << "surname: " << client.surname << '\n' << "Age: " << client.age << '\n' << "Deposit: " << client.deposit << '\n' << "Login: " << client.login << '\n' << "Password: " << client.password << '\n';
+	}
+	istream& operator >> (istream& is, Client& client) {
+		return is >> client.name >> client.surname >> client.age >> client.deposit >> client.login >> client.password;
+	}
+}	

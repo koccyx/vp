@@ -11,6 +11,10 @@ namespace FSN {
 		password = tpassword;
 		position = tposition;
 	}
+	
+	Employe::Employe() {
+
+	}
 
 	void Employe::setName(string tname) {
 		name = tname;
@@ -62,5 +66,34 @@ namespace FSN {
 
 	void Employe::say(string words) {
 		cout << "Hello I`am " << position << " and I can offer you a " << words;
+	}
+
+	bool Employe::operator == (const Employe& other) {
+		return this->age == other.age;
+	}
+
+	bool Employe::operator > (const Employe& other) {
+		return this->age > other.age;
+	}
+
+	bool Employe::operator < (const Employe& other) {
+		return this->age < other.age;
+	}
+
+	void Employe::operator = (const Employe& other) {
+		this->name = other.name;
+		this->surname = other.surname;
+		this->age = other.age;
+		this->login = other.login;
+		this->password = other.password;
+		this->position = other.position;
+	}
+
+	ostream& operator << (ostream& os, const Employe& employe) {
+		return os << "name: " << employe.name << '\n' << "surname: " << employe.surname << '\n' << "Age: " << employe.age << '\n' << "Position: " << employe.position << '\n' << "Login: " << employe.login << '\n' << "Password: " << employe.password << '\n';
+	}
+
+	istream& operator >> (istream& is, Employe& employe) {
+		return is >> employe.name >> employe.surname >> employe.age >> employe.position >> employe.login >> employe.password;
 	}
 }
