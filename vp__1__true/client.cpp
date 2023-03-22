@@ -1,4 +1,5 @@
 #include "client.h"
+#include <iomanip>
 using namespace std;
 
 
@@ -65,6 +66,10 @@ namespace FSN {
 
 	void Client::say(string words) {
 		cout << "Hello I want to " << words;
+	}
+
+	void Client::print() {
+		cout << setw(12) << this->name << '|' << setw(12) << this->surname << '|' << setw(3) << this->age << '|' << setw(10) << this->login << '|' << setw(15) << this->password << '|' << setw(10) << this->deposit << '|' << '\n';
 	}
 
 	bool Client::operator == (const Client& other) {

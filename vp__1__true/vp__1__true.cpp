@@ -30,7 +30,7 @@ int testFunc3() {
     return 32;
 }
 
-int compareClients() {
+int compareClientsMin() {
     Client* clients = new Client[10]{
         Client("Denis", "Yakimov", 24, "Tolya", "menameisTolya", 900),
         Client("Pavel", "Donskoy", 32, "Nemu", "nemuLoveryPac", 2900),
@@ -49,27 +49,54 @@ int compareClients() {
         }
     }
     for (int i = 0; i < clientsSize; i++) {
-        cout << clients[i].getDeposit() << '\n';
+        clients[i].print();
     }
     delete[] clients;
     return 10;
 }
 
-int sizes = 4;
+int compareClientsMax() {
+    Client* clients = new Client[10]{
+        Client("Denis", "Yakimov", 24, "Tolya", "menameisTolya", 900),
+        Client("Pavel", "Donskoy", 32, "Nemu", "nemuLoveryPac", 2900),
+        Client("Climentino", "Emanuel",44 , "Nik", "LordNicko23", 200000),
+        Client("Nicko", "Perfect", 26, "Pnick", "fdssa", 30),
+        Client("Jackman", "Hinss", 25, "Hinssey", "hinsjckey32", 9000000)
+    };
+    int clientsSize = 5;
+    for (int i = 0; i < clientsSize - 1; i++) {
+        for (int j = 0; j < clientsSize - 1 - i; j++) {
+            if (clients[j] < clients[j + 1]) {
+                Client temp = clients[j];
+                clients[j] = clients[j + 1];
+                clients[j + 1] = temp;
+            }
+        }
+    }
+    for (int i = 0; i < clientsSize; i++) {
+        clients[i].print();
+    }
+    delete[] clients;
+    return 10;
+}
+
+int sizes = 5;
 
 int main()
 {
     char wr1[20] = "Meet a client";
     char wr2[30] = "Ask an employee";
-    char wr3[20] = "contribution owner";
-    char wr4[20] = "Overloading";
+    char wr3[20] = "Contribution owner";
+    char wr4[40] = "Sort Clients from min deposit to max";
+    char wr5[40] = "Sort Clients from max deposit to min";
  
     MenuItem item1(wr1, testFunc1);
     MenuItem item2(wr2, testFunc2);
     MenuItem item3(wr3, testFunc3);
-    MenuItem item4(wr4, compareClients);
+    MenuItem item4(wr4, compareClientsMin);
+    MenuItem item5(wr5, compareClientsMax);
 
-    MenuItem allItems[4]{ item1, item2, item3, item4 };
+    MenuItem allItems[5]{ item1, item2, item3, item4, item5};
 
     char menuName[20] = "first program";
     MyMenu menu(menuName, allItems, sizes);

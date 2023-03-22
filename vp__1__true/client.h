@@ -21,6 +21,7 @@ namespace FSN {
 		void setLogin(std::string);
 		void setPassword(std::string);
 		void setDeposit(int);
+		void print();
 		void say(std::string) override;
 		bool operator == (const Client& other);
 		bool operator > (const Client& other);
