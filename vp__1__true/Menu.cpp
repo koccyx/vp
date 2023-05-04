@@ -1,11 +1,12 @@
 #include <iostream>
+#include <string>
 #include "Menu.h"
 
 namespace FSN {
-	MyMenu::MyMenu(char* name, MenuItem* items, int size) : menuName(name), menuItems(items), countItems(size) {};
+	MyMenu::MyMenu(string name, MenuItem* items, int size) : menuName(name), menuItems(items), countItems(size) {};
 
 	MyMenu::~MyMenu() {
-		delete[] menuName;
+		
 	}
 
 	int MyMenu::getSelect() const{
@@ -20,7 +21,7 @@ namespace FSN {
 		return isRunning;
 	}
 
-	char* MyMenu::getTitle() {
+	string MyMenu::getTitle() {
 		return menuName;
 	}
 

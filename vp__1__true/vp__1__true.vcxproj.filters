@@ -16,6 +16,9 @@
     <Filter Include="menu">
       <UniqueIdentifier>{662590a0-dc06-457c-b2ed-63bcb2d23038}</UniqueIdentifier>
     </Filter>
+    <Filter Include="containers">
+      <UniqueIdentifier>{8853cb00-fd33-4f04-817b-6fc0b348692d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MenuItem.cpp">
@@ -33,6 +36,12 @@
     </ClCompile>
     <ClCompile Include="Contribution.cpp">
       <Filter>models\classContribution</Filter>
+    </ClCompile>
+    <ClCompile Include="container.cpp">
+      <Filter>containers</Filter>
+    </ClCompile>
+    <ClCompile Include="Source2.cpp">
+      <Filter>containers</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -53,6 +62,9 @@
     </ClInclude>
     <ClInclude Include="Contribution.h">
       <Filter>models\classContribution</Filter>
+    </ClInclude>
+    <ClInclude Include="Container.h">
+      <Filter>containers</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

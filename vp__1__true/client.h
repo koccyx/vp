@@ -23,6 +23,7 @@ namespace FSN {
 		void setDeposit(int);
 		void print();
 		void say(std::string) override;
+		void change(std::string, std::string, int, std::string, std::string, int);
 		bool operator == (const Client& other);
 		bool operator > (const Client& other);
 		bool operator < (const Client& other);

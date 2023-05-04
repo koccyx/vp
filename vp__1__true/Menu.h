@@ -5,18 +5,18 @@
 namespace FSN {
 	class MyMenu {
 	public:
-		MyMenu(char*, MenuItem*, int);
+		MyMenu(string, MenuItem*, int);
 		~MyMenu();
 		void Print();
 		int getSelect() const;
 		bool isRun() const;
 		int getCount() const;
-		char* getTitle();
+		string getTitle();
 		MenuItem* getItems();
 		void printMenu();
 		int runMenu();
 	private:
-		char* menuName = new char[20];
+		string menuName;
 		int countItems;
 		int selectedItem{-1};
 		bool isRunning;

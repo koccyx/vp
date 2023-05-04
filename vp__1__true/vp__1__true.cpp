@@ -3,8 +3,15 @@
 #include "client.h"
 #include "employe.h"
 #include "Contribution.h"
+#include "Source2.cpp"
 #include <iostream>
 using namespace FSN;
+/*
+ClassContainer* mas = ClassContainer();
+mas[1] = Client("Denis", "Yakimov", 24, "Tolya", "menameisTolya", 900);
+*/ 
+
+
 
 Client* clients = new Client[10]{
         Client("Denis", "Yakimov", 24, "Tolya", "menameisTolya", 900),
@@ -16,8 +23,28 @@ Client* clients = new Client[10]{
 
 int CLIENTS_SIZE = 5;
 
-int SIZES = 6;
+int SIZES = 8;
 
+ClassArray a = ClassArray(0);
+
+void upload() {
+    for (int i = 0; i < 5; i++) {
+        a.add(clients[i]);
+    }
+}
+
+int addClient() {
+    cout << "input Client data\n";
+
+    int tage, tdeposit;
+    string tname, tsurname, tlogin, tpassword;
+
+    cin >> tname >> tsurname >> tage >> tlogin >> tpassword >> tdeposit;
+    Client user = Client(tname, tsurname, tage, tlogin, tpassword, tdeposit);
+    a.add(user);
+
+    return 100;
+}
 
 int testFunc1() {
     Client client1("Alex", "Hiam", 23, "Ahims", "123al23", 39000);
@@ -39,77 +66,57 @@ int testFunc3() {
     Contribution contribution1("C321", &client1, 1000, 0.1);
     std::cin >> contribution1;
     std::cout << contribution1.getPercents() << '\n';
+    cout << contribution1;
     return 32;
 }
 
 int compareClientsMin() {
 
-    for (int i = 0; i < CLIENTS_SIZE - 1; i++) {
-        for (int j = 0; j < CLIENTS_SIZE - 1 - i; j++) {
-            if (clients[j] > clients[j + 1]) {
-                Client temp = clients[j];
-                clients[j] = clients[j + 1];
-                clients[j + 1] = temp;
-            }
-        }
-    }
+    a.sortMaxToMin();
 
-    for (int i = 0; i < CLIENTS_SIZE; i++) {
-        clients[i].print();
-    }
-
-    delete[] clients;
+    a.Show();
     
     return 10;
 }
 
 int compareClientsMax() {
-    for (int i = 0; i < CLIENTS_SIZE - 1; i++) {
-        for (int j = 0; j < CLIENTS_SIZE - 1 - i; j++) {
-            if (clients[j] < clients[j + 1]) {
-                Client temp = clients[j];
-                clients[j] = clients[j + 1];
-                clients[j + 1] = temp;
-            }
-        }
-    }
+    
+    a.sortMinToMax();
 
-    for (int i = 0; i < CLIENTS_SIZE; i++) {
-        clients[i].print();
-    }
-
-    delete[] clients;
+    a.Show();
     
     return 10;
 }
 
 int deleteClient() {
+    a.Show();
+    cout << "input client num ";
     int num;
-    cout << "Wich client you woudl like to delete?\n";
-    for (int i = 0; i < CLIENTS_SIZE; i++) {
-        cout << i+1 << '|';
-        clients[i].print();
-    }
-    do {
-        cout << '\n' << "select -> ";
-        cin >> num;
-    } while (num > CLIENTS_SIZE || num < 0);
-    num--;
-    CLIENTS_SIZE--;
-    for (int i = num; i < CLIENTS_SIZE; i++) {
-        clients[i] = clients[i + 1];
-    }
+    cin >> num;
+    a.remove(num); 
     return 10;
 }
 
+int changeClient() {
+    cout << "input client num\n";
+    int num;
+    cin >> num;
+    a.change(num);
+    return 10;
+};
+
 int main()
 {
+    upload();
+
     char wr1[20] = "Meet a client";
     char wr2[30] = "Ask an employee";
     char wr3[20] = "Contribution owner";
     char wr4[40] = "Sort Clients from min deposit to max";
     char wr5[40] = "Sort Clients from max deposit to min";
     char wr6[20] = "Delete client";
+    char wr7[20] = "add client";
+    char wr8[20] = "change Client";
 
  
     MenuItem item1(wr1, testFunc1);
@@ -118,9 +125,12 @@ int main()
     MenuItem item4(wr4, compareClientsMin);
     MenuItem item5(wr5, compareClientsMax);
     MenuItem item6(wr6, deleteClient);
+    MenuItem item7(wr7, addClient);
+    MenuItem item8(wr8, changeClient);
 
 
-    MenuItem allItems[6]{ item1, item2, item3, item4, item5, item6};
+
+    MenuItem allItems[8]{ item1, item2, item3, item4, item5, item6, item7, item8};
 
     char menuName[20] = "first program";
     MyMenu menu(menuName, allItems, SIZES);

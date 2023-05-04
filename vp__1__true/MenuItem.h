@@ -7,11 +7,11 @@ namespace FSN {
 	public:
 		typedef int (*Function)();
 		Function func;
-		char* itemName = new char[20];
-		MenuItem(char*, Function);
+		string itemName;
+		MenuItem(string, Function);
 		~MenuItem();
-		void setItemName(char*);
-		char* getItemName();
+		void setItemName(string);
+		string getItemName();
 		void Print();
 		int run();
 	};

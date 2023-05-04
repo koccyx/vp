@@ -4,17 +4,16 @@
 
 
 namespace FSN {
-	MenuItem::MenuItem(char* name, Function f) : itemName(name), func(f) {};
+	MenuItem::MenuItem(string name, Function f) : itemName(name), func(f) {};
 	
 	MenuItem::~MenuItem() {
-		delete[] itemName;
 	}
 	
-	void MenuItem::setItemName(char* name) {
+	void MenuItem::setItemName(string name) {
 		itemName = name;
 	}
 
-	char* MenuItem::getItemName() {
+	string MenuItem::getItemName() {
 		return itemName;
 	}
 

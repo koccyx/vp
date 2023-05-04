@@ -15,6 +15,14 @@ namespace FSN {
 	Client::Client() {
 
 	}
+	void Client::change(std::string tname, std::string tsurname, int tage, std::string tlogin, std::string tpassword, int tdeposit) {
+		this->setName(tname);
+		this->setAge(tage);
+		this->setSurname(tsurname);
+		this->setLogin(tlogin);
+		this->setPassword(tpassword);
+		this->setDeposit(tdeposit);
+	}
 
 	void Client::setName(string tname) {
 		name = tname;
