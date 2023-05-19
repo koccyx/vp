@@ -1,19 +1,20 @@
-#include "MenuItem.h"
+﻿#include "MenuItem.h"
 #include "Menu.h"
 #include "client.h"
 #include "employe.h"
 #include "Contribution.h"
-#include "Source2.cpp"
+#include "myContainer.h"
 #include <iostream>
+#include <fstream>
 using namespace FSN;
-/*
-ClassContainer* mas = ClassContainer();
-mas[1] = Client("Denis", "Yakimov", 24, "Tolya", "menameisTolya", 900);
-*/ 
+
+
+MyVector<Client> clients;
 
 
 
-Client* clients = new Client[10]{
+
+Client* clientus = new Client[10]{
         Client("Denis", "Yakimov", 24, "Tolya", "menameisTolya", 900),
         Client("Pavel", "Donskoy", 32, "Nemu", "nemuLoveryPac", 2900),
         Client("Climentino", "Emanuel",44 , "Nik", "LordNicko23", 200000),
@@ -21,29 +22,66 @@ Client* clients = new Client[10]{
         Client("Jackman", "Hinss", 25, "Hinssey", "hinsjckey32", 9000000)
 };
 
-int CLIENTS_SIZE = 5;
 
-int SIZES = 8;
 
-ClassArray a = ClassArray(0);
 
-void upload() {
-    for (int i = 0; i < 5; i++) {
-        a.add(clients[i]);
-    }
-}
+
+int SIZES = 6;
+
+
+
 
 int addClient() {
-    cout << "input Client data\n";
+    int count;
+    cout << "input amount of clients: "; 
+    cin >> count;
+    for (int i = 0; i < count; i++) {
+        cout << "\nInput Client data:\n";
+        Client client;
+        cin >> client;  	
+        clients.addElement(client);
+    }
+    cout << "\n Inputing is done \n\n";
+    return 40;
+}
 
-    int tage, tdeposit;
-    string tname, tsurname, tlogin, tpassword;
 
-    cin >> tname >> tsurname >> tage >> tlogin >> tpassword >> tdeposit;
-    Client user = Client(tname, tsurname, tage, tlogin, tpassword, tdeposit);
-    a.add(user);
+int printClient() {
+    clients.print();
+    return 20;
+}
 
-    return 100;
+
+/*int sortClient() {
+    for (int i = 0; i < clients.Size(); i++) {
+        for (int j = 0; j < clients.Size() - 1; j++) {
+            if (clients[i] > clients[i + 1]) {
+                Client tempClient = clients[i + 1];
+                clients[i + 1] = clients[i];
+                clients[i] = tempClient;
+            }
+        }
+    }
+    cout << "sorting is done";
+    return 20;
+}
+
+*/
+int deleteClient() {
+    printClient();
+    cout << "\nChoice the client: ";
+    int deleteNumber;  	
+    cin >> deleteNumber;
+    cout << "\n";
+    clients.deleteElement(deleteNumber);
+
+    cout << "Client deleted" << '\n' << '\n';
+    return 10;
+}
+
+int printClients() {
+    clients.print();
+    return 20;
 }
 
 int testFunc1() {
@@ -70,71 +108,37 @@ int testFunc3() {
     return 32;
 }
 
-int compareClientsMin() {
 
-    a.sortMaxToMin();
 
-    a.Show();
-    
-    return 10;
-}
-
-int compareClientsMax() {
-    
-    a.sortMinToMax();
-
-    a.Show();
-    
-    return 10;
-}
-
-int deleteClient() {
-    a.Show();
-    cout << "input client num ";
-    int num;
-    cin >> num;
-    a.remove(num); 
-    return 10;
-}
-
-int changeClient() {
-    cout << "input client num\n";
-    int num;
-    cin >> num;
-    a.change(num);
-    return 10;
-};
-
-int main()
-{
-    upload();
-
+int main() {
     char wr1[20] = "Meet a client";
     char wr2[30] = "Ask an employee";
     char wr3[20] = "Contribution owner";
     char wr4[40] = "Sort Clients from min deposit to max";
-    char wr5[40] = "Sort Clients from max deposit to min";
+    char wr5[40] = "Print clients";
     char wr6[20] = "Delete client";
     char wr7[20] = "add client";
     char wr8[20] = "change Client";
 
- 
+    for (int i = 0; i < 5; i++) {
+        clients.addElement(clientus[i]);
+    }
+    
     MenuItem item1(wr1, testFunc1);
     MenuItem item2(wr2, testFunc2);
     MenuItem item3(wr3, testFunc3);
-    MenuItem item4(wr4, compareClientsMin);
-    MenuItem item5(wr5, compareClientsMax);
-    MenuItem item6(wr6, deleteClient);
-    MenuItem item7(wr7, addClient);
-    MenuItem item8(wr8, changeClient);
+    //MenuItem item4(wr4, sortClient);
+    MenuItem item4(wr6, deleteClient);
+    MenuItem item5(wr7, addClient);
+    MenuItem item6(wr5, printClient);
 
 
 
-    MenuItem allItems[8]{ item1, item2, item3, item4, item5, item6, item7, item8};
+    MenuItem allItems[6]{ item1, item2, item3, item4, item5, item6};
 
     char menuName[20] = "first program";
     MyMenu menu(menuName, allItems, SIZES);
     while (menu.runMenu());
-    return 0;
+
 }
 

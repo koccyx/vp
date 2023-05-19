@@ -37,12 +37,6 @@
     <ClCompile Include="Contribution.cpp">
       <Filter>models\classContribution</Filter>
     </ClCompile>
-    <ClCompile Include="container.cpp">
-      <Filter>containers</Filter>
-    </ClCompile>
-    <ClCompile Include="Source2.cpp">
-      <Filter>containers</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Menu.h">
@@ -63,7 +57,7 @@
     <ClInclude Include="Contribution.h">
       <Filter>models\classContribution</Filter>
     </ClInclude>
-    <ClInclude Include="Container.h">
+    <ClInclude Include="myContainer.h">
       <Filter>containers</Filter>
     </ClInclude>
   </ItemGroup>

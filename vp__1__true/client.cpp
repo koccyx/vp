@@ -105,6 +105,25 @@ namespace FSN {
 		return os << "name: " << client.name << '\n' << "surname: " << client.surname << '\n' << "Age: " << client.age << '\n' << "Deposit: " << client.deposit << '\n' << "Login: " << client.login << '\n' << "Password: " << client.password << '\n';
 	}
 	istream& operator >> (istream& is, Client& client) {
-		return is >> client.name >> client.surname >> client.age >> client.deposit >> client.login >> client.password;
+		std::cout << "name: ";
+		is >> client.name;
+		std::cout << "\n";
+		std::cout << "surname: ";
+		is >> client.surname;
+		std::cout << "\n";
+		std::cout << "age: ";
+		is >> client.age;
+		std::cout << "\n";
+		std::cout << "deposit: ";
+		is >> client.deposit;
+		std::cout << "\n";
+		std::cout << "login: ";
+		is >> client.login;
+		std::cout << "\n";
+		std::cout << "password: ";
+		is >> client.password;
+		std::cout << "\n";
+
+		return is;
 	}
 }	
